@@ -15,7 +15,7 @@ The intent is:
 
 ## Specification
 
-TODO
+See SPECIFICATION.md
 
 ## Contributing
 
