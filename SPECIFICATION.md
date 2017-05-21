@@ -37,6 +37,8 @@ The feature code is intended for future use in search filtering to find particul
 * bit 2: is a Slope block
 * bit 3: has at least one edge incompatible with standard edge height
 * bit 4: is part of a set
+* bit 5: has a feature impassable to infantry (e.g. coastal deepwater)
+* bit 6: has a hero feature (e.g. a bunker - has scenery as well as terrain)
 
 # Version History
 
