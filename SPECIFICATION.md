@@ -22,9 +22,21 @@
   * East: right
   * West: left
 
-* Each block shall have an embossed feature (text, arrow etc) indicating the direction of north on the top playing surface. In the case of text, this should be aligned to be read normally left to right while holding the block with North upwards.
+* Each block shall have an embossed feature (text, arrow etc) indicating the direction of north on the top playing surface. In the case of text, this should be aligned to be read normally left to right while holding the block with North upwards. (Note: while the block specification is symmetrical, some surfaces may have asymmetric edges e.g. river bends. The North reference is specified to encourage consistency in documentation, particularly of heavily customised sets.) 
 
 * The embossed North feature shall be embossed no more than 0.2mm to allow for easy removal or covering.
+
+## Naming Conventions
+
+### Feature Code Bits
+
+The feature code is intended for future use in search filtering to find particular blocks that have or lack certain features. It's implemented by setting the following flags to either 0 or 1. The bit spec is as follows:
+
+* bit 0: is a Low block
+* bit 1: is a High block
+* bit 2: is a Slope block
+* bit 3: has at least one edge incompatible with standard edge height
+* bit 4: is part of a set
 
 # Version History
 
