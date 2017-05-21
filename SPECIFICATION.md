@@ -10,15 +10,17 @@
 
 * Terrain blocks may include transitions from Low to High ("Slope" blocks).
 
-* The sides of terrain blocks shall be vertical and smooth to provide for placing blocks side by side.
+* The sides of terrain blocks shall be vertical and smooth to provide for placing blocks side by side.  The bottom shall be flat and smooth.
 
-* Each vertical side shall feature a cylindrical hole, 6.5mm diameter and 16mm deep, centred horizontally on the face with the centre of the cylinder 6mm above the bottom edge. The intent is that these shall accept standard 6mm dowels for joining the boards. 
+* Terrain blocks should be solid, to print with fill specified by the printer. Don't model fill.
+
+* Each vertical side shall feature a cylindrical hole, 6.5mm diameter and 16.5mm deep, centred horizontally on the face with the centre of the cylinder 6mm above the bottom edge. The intent is that these shall accept standard 6mm x 32mm dowels for joining the boards. 
 
 * Each block's 3d model shall be centred on the origin, aligned with the 3d "top" as the playing surface, and the following vertical face orientations:
-	* North: back
-	* South: front
-	* East: right
-	* West: left
+  * North: back
+  * South: front
+  * East: right
+  * West: left
 
 * Each block shall have an embossed feature (text, arrow etc) indicating the direction of north on the top playing surface. In the case of text, this should be aligned to be read normally left to right while holding the block with North upwards.
 
