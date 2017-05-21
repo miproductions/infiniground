@@ -1,0 +1,39 @@
+# Specification Status
+
+DRAFT
+
+# Infiniground
+
+Infiniground is a specification for 3d printable modular tabletop wargaming terrain; and a collection of compatible terrain pieces.
+
+The intent is:
+
+* that anyone with basic 3d design skills can design Infiniground-compatible terrain with freely available tools and add it to the community repository
+* that individuals or clubs can freely download and print Infiniground terrain 
+* that those who wish to design and/or print Infiniground-compatible terrain commercially for sale can do so - however we ask that you contribute your designs to this repository for community use
+* that anyone with Infiniground-compatible terrain will be able to connect it to any other Infiniground-comptible terrain
+
+## Specification
+
+TODO
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Create your Infiniground-compatible terrain, ensuring you comply with the specification
+4. Commit your changes: `git commit -am 'Add some feature'`
+5. Push to the branch: `git push origin my-new-feature`
+6. Submit a pull request
+
+## History
+
+20170521: Initial design completed
+
+## Credits
+
+TODO
+
+## License
+
+CC-BY-SA-4.0 https://creativecommons.org/licenses/by-sa/4.0/
