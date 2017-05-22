@@ -26,6 +26,8 @@
 
 * The embossed North feature shall be embossed no more than 0.2mm to allow for easy removal or covering.
 
+* Indented features should come no closer than 5mm to the bottom of the block and should not intersect or obstruct the dowel holes.
+
 ## Naming Conventions
 
 ### Feature Code Bits
