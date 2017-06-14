@@ -32,8 +32,8 @@ See SPECIFICATION.md
 
 ## Credits
 
-https://github.com/miproductions/ Creator and author of the Thingiverse Generator
-BTC: 1FthbhfydqQZUm2tW4uvivWcQ63vFiKYu1
+* https://github.com/miproductions/ Creator and author of the Thingiverse Generator
+* * BTC: 1FthbhfydqQZUm2tW4uvivWcQ63vFiKYu1
 
 ## License
 
