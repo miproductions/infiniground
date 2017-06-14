@@ -2,149 +2,67 @@
 // Forked from https://github.com/DanielJoyce/ultimate_base_generator
 // Under CC-BY-SA-4.0
 
-/* [Base] */
+/* [Block] */
 
-// Polygon
-base_style = 4; // [3:triangle,4:square,5:pentagon,6:hexagon,7:heptagon,8:octagon,50:round]
+// base block
+block_specification = 15; // [3:Skin, 15:Low, 60:High]
 
-// Base diameter,
-diameter = 25; // [15:250]
+// texture
+height_map = "crater_tex_01.png"; // [image_surface:150x150]
+texture_scale = 20; // [1:100]
+raise_texture = 1; // [-100:100]
 
-// Thickness of base, ~3 mm is standard:
-thickness = 3; // [1:25]
-
-// Stretch base along x-axis
-stretch_perc = 0; // [0:400]
-
-/* [Slot or Stand] */
-
-// Should base have a slot or stand?
-slot = 1; // [0:Neither, 1:Slot, 2:Stand]
-
-// Orientation of base
-base_orientation = 1; // [1:style 1, 2:style 2]
-
-// Orientation of slot
-slot_orientation = 1; // [1:x axis, 2:y axis]
-
-// Normally 25 mm square / hex base diameter is measured side to side:
-across_sides = 1; // [0:no, 1:yes]
-
-// Stand height in mm from ground, does not include peg length
-stand_height = 28; // [10:112]
-
-// Diameter of peg in tenths of mm
-peg_diameter = 10; // [10:100]
-
-// Length of peg in mm
-peg_height = 5; // [2:10]
-
-/* [Texture] */
-
-// File for surface texture
-texture_filename = "texture.dat"; // [image_surface:100x100]
-
-// How much to scale the texture vertically, 10 = no scaling
-texture_scale = 10; // [1:50]
-
-// How much the texture is moved up/down the top of the base
-panel_offset = 0; // [-20:20]
+// logo
+logo_text = "INFINIGROUND";
+logo_size = 3; // [0:100]
+logo_offset_x = 76; // [0:152]
+logo_offset_y = 76; // [0:152]
+logo_emboss = 5.2; // [0:100]
 
 /* [Hidden] */
 
-radius = diameter / 2;
+// block dimensions
+block_width = 152;
+block_edge_indent = 1.6;
+block_reserved_base = 5;
 
-cos_r = cos(360/(2*base_style));
+// peg holes
+peg_diameter = 6.5;
+peg_depth = 16.5;
 
-scale_factor = across_sides == 0 ? 1 : 1 / cos_r;
+// Build It
 
-offset = (diameter * scale_factor) + 2;
-
-stretch_x = stretch_perc / 100;
-
-module texture(diameter, texture_scale) {
-  scale_factor = (diameter+0.5)/100;
-  scale([scale_factor,scale_factor,texture_scale]) {
-    surface(file=texture_filename, center=true);
-  }
-}
-
-
-module texture_panel(sides, diameter, texture_scale){
-  radius = diameter/2;
-  intersection(){
-    cylinder(h=20,r=radius, $fn=sides);
-    translate([0,0,1]) texture(diameter, texture_scale);
-  }
-}
-
-module stand(stand_height, peg_height, peg_diam) {
-  peg_r = peg_diam / 2;
-  stand_r2 = peg_r +.5;
-  stand_r1 = peg_r +1;
-  union(){
-    // peg
-    cylinder(r1=peg_r, r2=peg_r,h=stand_height+peg_height, $fn=50);
-    cylinder(r1=stand_r1, r2=stand_r2, h=stand_height - 0.01, $fn=50);
-  }
-}
-
-
-module base(sides,
-  diameter = 25,
-  slot = false,
-  stand = false,
-  height = 3.33,
-  base_x = true,
-  slot_x = true,
-  stand_height = 40,
-  peg_height = 4,
-  peg_diameter = 2,
-  inset = false,
-  texture_scale = 1.0,
-  panel_offset = -0.4){
-  radius = diameter / 2;
-  cos_r = cos(360/(2*sides));
-  scale_factor = inset ? 1 : 1 / cos_r;
-  slot_width = cos_r*diameter*0.9*scale_factor;
-  slot_angle = slot_x ? 0 : 90;
-  even = sides % 2 == 0;
-  base_angle = even ? 360 / (2*sides) : 90;
-  base_r = base_x ? 0 : base_angle;
-  top_radius = radius - 0.5;
-  difference(){
-    union(){
-      if(stand){
-        translate([0,0,0.5]){
-          stand(stand_height-0.5, peg_height, peg_diameter);
+difference() {
+    union() {
+        // model the texture
+        translate([block_edge_indent,block_edge_indent,raise_texture]) {
+            scale([1,1,texture_scale/100]) {
+                // the texture surface
+                surface(file=height_map, convexity=10);
+            }
         }
-      }
-      scale([scale_factor + stretch_x, scale_factor,1]) rotate([0,0,360/(2*sides)]) {
-        rotate([0,0, base_r]) cylinder(h = height, r1=radius, r2=top_radius, $fn=sides);
-        translate([0,0,height-1+panel_offset]){
-          texture_panel(sides=sides,
-                    diameter=diameter-1,
-                    texture_scale=texture_scale);
+        difference() {
+            // the basic cube
+            cube([block_width, block_width, block_specification]);
+            // subtract the cut cube
+            translate([block_edge_indent,block_edge_indent,block_reserved_base]) {
+                // the cut cube
+                cube([block_width - (2 * block_edge_indent), block_width - (2 * block_edge_indent), block_width]);
+            }
         }
-      }
     }
-    if(slot){
-      rotate([0,0,slot_angle]) cube([2.3,slot_width,height+10], center=true);
+    // cut off anything below y=0    
+    translate([0,0,-200]) {
+        // bottom cut cube
+        cube([block_width, block_width, 200]);
     }
-  }
 }
 
-
-base(base_style,
-    diameter = diameter,
-    slot = (slot == 1),
-    stand = (slot == 2),
-    height = thickness,
-    inset = (across_sides == 0),
-    stand_height = stand_height,
-    peg_height = peg_height,
-    peg_diameter = peg_diameter/10,
-    base_x = (base_orientation == 1),
-    slot_x = (slot_orientation == 1),
-    panel_offset = panel_offset/10,
-    texture_scale = texture_scale/10);
+// add the logo if specified
+if (logo_emboss > 0 && logo_size > 0) {
+    translate([logo_offset_x, logo_offset_y, 0]) {
+        linear_extrude(logo_emboss) {
+            text(logo_text, size=logo_size, halign="center", valign="center");
+        }
+    }
+}
