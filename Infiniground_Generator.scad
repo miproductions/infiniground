@@ -1,4 +1,5 @@
-// Infiniground SCAD Generator
+// Infiniground Wargaming Terrain Generator
+// https://github.com/miproductions/infiniground/
 // Forked from https://github.com/DanielJoyce/ultimate_base_generator
 // Under CC-BY-SA-4.0
 
@@ -8,10 +9,13 @@
 block_specification = 15; // [3:Skin, 15:Low, 60:High]
 
 // A greyscale 150x150px height map (white high)
-height_map = "crater_tex_01.png"; // [image_surface:150x150]
+height_map = "texture.dat"; // [image_surface:150x150]
 
 // The height difference in mm between black and white points - set to 0 for no texture
 texture_scale = 20; // [0:100]
+
+// OpenSCAD requires 100, Thingiverse Customizer requires 1
+texture_scale_factor = 1;
 
 // Move the texture up or down as desired
 raise_texture = 1; // [-100:100]
@@ -54,7 +58,7 @@ difference() {
         union() {
             // model the texture
             translate([block_edge_indent,block_edge_indent,raise_texture]) {
-                scale([1,1,texture_scale/100]) {
+                scale([1,1,texture_scale/texture_scale_factor]) {
                     // the texture surface
                     surface(file=height_map, convexity=10);
                 }
