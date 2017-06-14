@@ -11,7 +11,7 @@ The intent is:
 * that anyone with basic 3d design skills can design Infiniground-compatible terrain with freely available tools and add it to the community repository
 * that individuals or clubs can freely download and print Infiniground terrain 
 * that those who wish to design and/or print Infiniground-compatible terrain commercially for sale can do so - however we ask that you contribute your designs to this repository for community use
-* that anyone with Infiniground-compatible terrain will be able to connect it to any other Infiniground-comptible terrain
+* that anyone with Infiniground-compatible terrain will be able to connect it to any other Infiniground-compatible terrain
 
 ## Specification
 
