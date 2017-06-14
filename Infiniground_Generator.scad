@@ -11,7 +11,7 @@ block_specification = 15; // [3:Skin, 15:Low, 60:High]
 height_map = "crater_tex_01.png"; // [image_surface:150x150]
 
 // The height difference in mm between black and white points - set to 0 for no texture
-texture_scale = 0; // [0:100]
+texture_scale = 20; // [0:100]
 
 // Move the texture up or down as desired
 raise_texture = 1; // [-100:100]
@@ -20,7 +20,7 @@ raise_texture = 1; // [-100:100]
 logo_text = "INFINIGROUND";
 
 // Font size (3 is suggested)
-logo_size = 10; // [0:100]
+logo_size = 3; // [0:100]
 
 // Offset the text to the east in mm
 logo_offset_x = 76; // [0:152]
@@ -29,7 +29,7 @@ logo_offset_x = 76; // [0:152]
 logo_offset_y = 76; // [0:152]
 
 // Distance to emboss the text from the bottom of the base in mm
-logo_emboss = 15.4; // [0:100]
+logo_emboss = 5.4; // [0:100]
 
 /* [Hidden] */
 
