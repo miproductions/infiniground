@@ -21,7 +21,7 @@ See SPECIFICATION.md
 
 1. Fork the repository
 2. Create your feature branch: `git checkout -b my-new-feature`
-3. Create your Infiniground-compatible terrain, ensuring you comply with the specification - note you can even use a simple generator on Thingiverse using greyscale heightmaps: https://www.thingiverse.com/apps/customizer/run?thing_id=2383855
+3. Create your Infiniground-compatible terrain, ensuring you comply with the specification - note you can even use a simple generator on Thingiverse using greyscale heightmaps: https://www.thingiverse.com/apps/customizer/run?thing_id=2383855 or download the generator SCAD file to create your terrain easily in OpenSCAD
 4. Commit your changes: `git commit -am 'Add some feature'`
 5. Push to the branch: `git push origin my-new-feature`
 6. Submit a pull request
