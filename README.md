@@ -21,19 +21,20 @@ See SPECIFICATION.md
 
 1. Fork the repository
 2. Create your feature branch: `git checkout -b my-new-feature`
-3. Create your Infiniground-compatible terrain, ensuring you comply with the specification
+3. Create your Infiniground-compatible terrain, ensuring you comply with the specification - note you can even use a simple generator on Thingiverse using greyscale heightmaps: https://www.thingiverse.com/apps/customizer/run?thing_id=2383855
 4. Commit your changes: `git commit -am 'Add some feature'`
 5. Push to the branch: `git push origin my-new-feature`
 6. Submit a pull request
 
 ## History
 
+20170615: Thingiverse Generator 1.0
 20170521: Initial design completed
 
 ## Credits
 
 * https://github.com/miproductions/ Creator and author of the Thingiverse Generator
-* * BTC: 1FthbhfydqQZUm2tW4uvivWcQ63vFiKYu1
+  * BTC: 1FthbhfydqQZUm2tW4uvivWcQ63vFiKYu1
 
 ## License
 
