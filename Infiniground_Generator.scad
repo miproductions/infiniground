@@ -4,20 +4,32 @@
 
 /* [Block] */
 
-// base block
+// Blocks come in 3 specs: 3mm for skins, 15mm standard Low blocks and 60mm High blocks
 block_specification = 15; // [3:Skin, 15:Low, 60:High]
 
-// texture
+// A greyscale 150x150px height map (white high)
 height_map = "crater_tex_01.png"; // [image_surface:150x150]
-texture_scale = 20; // [1:100]
+
+// The height difference in mm between black and white points - set to 0 for no texture
+texture_scale = 0; // [0:100]
+
+// Move the texture up or down as desired
 raise_texture = 1; // [-100:100]
 
-// logo
+// Text to be embossed, aligned North
 logo_text = "INFINIGROUND";
-logo_size = 3; // [0:100]
+
+// Font size (3 is suggested)
+logo_size = 10; // [0:100]
+
+// Offset the text to the east in mm
 logo_offset_x = 76; // [0:152]
+
+// offset the text to the north in mm
 logo_offset_y = 76; // [0:152]
-logo_emboss = 5.2; // [0:100]
+
+// Distance to emboss the text from the bottom of the base in mm
+logo_emboss = 15.4; // [0:100]
 
 /* [Hidden] */
 
@@ -85,10 +97,13 @@ difference() {
             difference() {
                 // the basic cube
                 cube([block_width, block_width, block_specification]);
-                // subtract the cut cube
-                translate([block_edge_indent,block_edge_indent,block_reserved_base]) {
-                    // the cut cube
-                    cube([block_width - (2 * block_edge_indent), block_width - (2 * block_edge_indent), block_width]);
+                // hollow it out if there is a texture to allow for indented features
+                if (texture_scale > 0) {
+                    // subtract the cut cube
+                    translate([block_edge_indent,block_edge_indent,block_reserved_base]) {
+                        // the cut cube
+                        cube([block_width - (2 * block_edge_indent), block_width - (2 * block_edge_indent), block_width]);
+                    }
                 }
             }
         }
